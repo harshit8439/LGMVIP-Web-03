@@ -1,0 +1,97 @@
+body{
+    /* background-color: rgb(235, 21, 128); */
+    background-image: url(bg6.jpg);
+    background-attachment: fixed;
+    background-size:auto;
+    font-family: serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main{
+    display: flex;
+    padding: 50px;
+    
+}
+
+#box1 {
+    width:50%;
+    padding: 20px; 
+    margin-top:20px;
+    background-color: transparent;
+    margin-right:40px;
+    border-radius:13px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    /* box-shadow: rgba(0, 0, 0, 0.6) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+#box2{
+    width:50%;
+    background-color: transparent;
+    padding: 20px;
+    margin-top:20px;
+    margin-left:40px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    border-radius:13px;
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+
+#show{
+    width:100%;
+     overflow-x: auto;
+     border-collapse: collapse; 
+     border-radius: 10px;
+}
+
+#show th, #show td {
+    border: 1px solid #ccc; /* Add borders to table headers and cells */
+    padding: 8px; /* Add padding to headers and cells for spacing */
+    text-align: left; /* Align text to the left within headers and cells */
+    color: #fff;
+  
+}
+#show thead th {
+    background-color:#8c1aff; /* Replace with your desired background color */
+    color: #fff; /* Set text color for the header cells */
+}
+
+#show th {
+    background-color: #f2f2f2; /* Add a background color to table headers */
+}
+
+
+.no-border {
+    border: none !important;
+}
+
+#btn{
+    margin-top:10px;
+    width:30%;
+    border-radius:8px;
+    background: white; 
+    color:black;
+    border: 1px solid rgb(7, 6, 6);
+    /* border: none; */
+    /* outline: none; */
+    transition: 0.3s ease;
+}
+#btn:hover{
+    box-shadow: 0 0 3px 3px #fff;
+}
+
+#clear{
+    margin-left:10px;
+    width:30%;
+    border-radius:5px;
+    background:#8c1aff; 
+    color:white;
+    border: 1px solid white;
+    transition: 0.3s ease;
+}
+#clear:hover{
+    box-shadow: 0 0 3px 3px white;
+}

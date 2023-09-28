@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="cstyle.css">
+    <title>Registration Form</title>
+  </head>
+  <body>
+
+    <!-- Main container  -->
+    <div class="container-fluid main" >
+    
+    <!-- Left box -->
+    <div id="box1">
+        <!-- form starts -->
+        <div>
+            <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label" style="color: white;">Name</label>
+                  <input type="text" class="form-control" id="name" required>
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label" style="color: white;">Email</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="website" class="form-label" style="color: white;">Website</label>
+                    <input type="text" class="form-control" id="website" required>
+                </div>
+
+
+                  <!-- Gender input -->
+                <p style="color: white;">Gender</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" >
+                    <label class="form-check-label" for="male" style="color: white;">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" >
+                    <label class="form-check-label" for="female" style="color: white;">
+                        Female
+                    </label>
+                </div>
+                <br>
+
+                <p style="color: white;">Skills</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="java" id="java" required checked >
+                    <label class="form-check-label" for="java" style="color: white;">
+                      Java
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="html" id="html" >
+                    <label class="form-check-label" for="html" style="color: white;">
+                      HTML
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="css" id="css" >
+                    <label class="form-check-label" for="css" style="color: white;">
+                      CSS
+                    </label>
+                  </div>
+
+                
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                <input type="button" name="button" id="btn" value="Add" onclick="addData()">
+                <input type="reset" id="clear" value="Clear">
+              </form>
+        </div>
+        </div>
+
+        <div style="border-left:2px solid white;"></div>
+        <!-- Right box -->
+        <div id="box2">
+            <!-- Create a table to display the entered data -->
+            <table id="show">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                        <!-- <th>Image Link</th> -->
+                        <!-- <td><img id="displayImage" src="" alt="Image" ></td> -->
+                        <th>Gender</th>
+                        <th>Skills</th>
+                        <!-- <th>x`Delete</th> -->
+                    </tr>
+                </thead>
+                <tbody id="dataBody"></tbody>
+            </table>
+        </div>
+
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    function addData(){
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var website = document.getElementById("website").value;
+        // var image = document.getElementById("image").value;
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        var skills =[];
+
+        //Get selected skills
+        var sillCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        sillCheckboxes.forEach(function (checkbox){
+            skills.push(checkbox.value);
+        });
+
+        //create a new row
+        var table = document.getElementById("show");
+        var newRow=table.insertRow(-1);
+
+        // insert data into the new row
+        var cell1 = newRow.insertCell(0);
+        cell1.innerHTML = name;
+
+        var cell2 = newRow.insertCell(1);
+        cell2.innerHTML = email;
+
+        var cell3 = newRow.insertCell(2);
+        cell3.innerHTML = website;
+
+        // var cell4 = newRow.insertCell(3);
+        // // cell4.innerHTML = image;
+
+        var cell4 = newRow.insertCell(3);
+        cell4.innerHTML = gender;
+
+        var cell5 = newRow.insertCell(4);
+        cell5.innerHTML = skills.join(", ");
+
+        
+        var deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+
+    // Add a click event handler to the delete button
+    deleteButton.addEventListener("click", function() {
+        // Remove the corresponding row when the button is clicked
+        var rowIndex = this.parentNode.parentNode.rowIndex;
+        document.getElementById("show").deleteRow(rowIndex);
+    });
+
+    // Add the delete button to the last cell of the new row
+    var cell6 = newRow.insertCell(5); // Insert the delete button in the last cell
+    cell6.appendChild(deleteButton);
+    cell6.classList.add("no-border");
+    deleteButton.style.borderRadius = "10px"; 
+    deleteButton.style.backgroundColor = "#b213cec6";
+    deleteButton.style.color="white"; 
+    deleteButton.style.border="1px solid white";
+    deleteButton.style.fontSize= "15px";
+
+    }
+
+  </script>
+
+</body>
+</html>
